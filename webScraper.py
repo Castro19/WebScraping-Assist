@@ -18,7 +18,7 @@ def extract_courses(course_area):
     courses = course_area.find_all('div', class_='courseLine')
     extracted_courses = []
     for course in courses:
-        course_number = course.find('div', class_='prefixCourseNumber').text.strip()
+        course_number = course.find('div', class_='prefixCourseNumber').text.strip().replace(" ", "")
         course_title = course.find('div', class_='courseTitle').text.strip()
         course_units = course.find('div', class_='courseUnits').text.strip()
         # remove the "units" at end of unit counts if it is present
@@ -26,9 +26,9 @@ def extract_courses(course_area):
         course_units = course_units[:units_index] if units_index != -1 else course_units
 
         extracted_courses.append({
-            'Course Number': course_number,
-            'Course Title': course_title,
-            'Units': course_units
+            'courseNumber': course_number,
+            'courseTitle': course_title,
+            'courseUnits': course_units
         })
     return extracted_courses
 
@@ -57,25 +57,25 @@ try:
         sending_courses = row.find_all('div', class_='rowSending')
 
         courses_dict = {
-            "Receiving": {
-                "Courses": [],
-                "Conjunctions": []
+            "receiving": {
+                "courses": [],
+                "conjunctions": []
             },
-            'Sending': {
-                "Courses": [],
-                "Conjunctions": []
+            'sending': {
+                "courses": [],
+                "conjunctions": []
             }
         }
 
         for receiving in receiving_courses:
-            courses_dict["Receiving"]["Courses"] = extract_courses(receiving)
+            courses_dict["receiving"]["courses"] = extract_courses(receiving)
             conjunctions = receiving.find_all('div', class_='conjunction')
-            courses_dict["Receiving"]["Conjunctions"] = [conj.text.strip() for conj in conjunctions]
+            courses_dict["receiving"]["conjunctions"] = [conj.text.strip().upper() for conj in conjunctions]
 
         for sending in sending_courses:
-            courses_dict["Sending"]["Courses"] = extract_courses(sending)
+            courses_dict["sending"]["courses"] = extract_courses(sending)
             conjunctions = sending.find_all('div', class_='conjunction')
-            courses_dict["Sending"]["Conjunctions"] = [conj.text.strip() for conj in conjunctions]
+            courses_dict["sending"]["conjunctions"] = [conj.text.strip().upper() for conj in conjunctions]
 
         courses.append(courses_dict)
 
