@@ -1,0 +1,200 @@
+{
+    "receivingInstitution": "California Polytechnic University, San Luis Obispo",
+    "sendingInstitution": "Some Other School",
+    "agreements": [
+        {
+            "receiving": {
+                "conjunction": null,
+                "courses": [
+                    {
+                        "courseNumber": "CHEM 110",
+                        "courseTitle": "World of Chemistry",
+                        "courseUnits": "4.00"
+                    }
+                ]
+            },
+            "sending": {
+                "conjunction": "OR",
+                "courses": [
+                    {
+                        "conjunction": "AND",
+                        "courses": [
+                            {
+                                "courseNumber": "CHEM 2A",
+                                "courseTitle": "General Chemistry I",
+                                "courseUnits": "3.00"
+                            },
+                            {
+                                "courseNumber": "CHEM 2AL",
+                                "courseTitle": "General Chemistry I Laboratory",
+                                "courseUnits": "2.00"
+                            }
+                        ]
+                    },
+                    {
+                        "conjunction": "AND",
+                        "courses": [
+                            {
+                                "courseNumber": "CHEM 14",
+                                "courseTitle": "Fundamental Chemistry for Allied Health",
+                                "courseUnits": "3.00"
+                            },
+                            {
+                                "courseNumber": "CHEM 14L",
+                                "courseTitle": "Fundamental Chemistry for Allied Health Laboratory",
+                                "courseUnits": "1.00"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "receiving": {
+                "conjunction": "AND",
+                "courses": [
+                    {
+                        "courseNumber": "BIO 150",
+                        "courseTitle": "Diversity and the History of Life",
+                        "courseUnits": "4.00"
+                    },
+                    {
+                        "courseNumber": "BIO 161",
+                        "courseTitle": "Introduction to Cell and Molecular Biology",
+                        "courseUnits": "4.00"
+                    }
+                ]
+            },
+            "sending": {
+                "conjunction": "AND",
+                "courses": [
+                    {
+                        "courseNumber": "BIOL 2",
+                        "courseTitle": "Cell and Molecular Biology",
+                        "courseUnits": "4.00"
+                    },
+                    {
+                        "courseNumber": "BIOL 6",
+                        "courseTitle": "Plant Biology and Ecology",
+                        "courseUnits": "4.00"
+                    },
+                    {
+                        "courseNumber": "BIOL 4",
+                        "courseTitle": "Principles of Evolution and Zoology",
+                        "courseUnits": "4.00"
+                    }
+                ]
+            }
+        },
+        {
+            "receiving": {
+                "conjunction": null,
+                "courses": [
+                    {
+                        "courseNumber": "BIO111",
+                        "courseTitle": "General Biology",
+                        "courseUnits": "4.00"
+                    }
+                ]
+            },
+            "sending": {
+                "conjunction": "OR",
+                "courses": [
+                    {
+                        "conjunction": null,
+                        "courses": [
+                            {
+                                "courseNumber": "BIOL3",
+                                "courseTitle": "Introduction to Life Science",
+                                "courseUnits": "4.00"
+                            }
+                        ]
+                    },
+                    {
+                        "conjunction": "AND",
+                        "courses": [
+                            {
+                                "courseNumber": "BIOL10",
+                                "courseTitle": "Introduction to Life Science Lecture",
+                                "courseUnits": "3.00"
+                            },
+                            {
+                                "courseNumber": "BIOL10L",
+                                "courseTitle": "Introduction to Life Science Lab",
+                                "courseUnits": "1.00"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "receiving": {
+                "conjunction": null,
+                "courses": [
+                    {
+                        "courseNumber": "MU250",
+                        "courseTitle": "Applied Music",
+                        "courseUnits": "1.00"
+                    }
+                ]
+            },
+            "sending": {
+                "conjunction": "OR",
+                "courses": [
+                    {
+                        "courseNumber": "MUSIC50",
+                        "courseTitle": "Private Lessons-Guitar",
+                        "courseUnits": "0.50"
+                    },
+                    {
+                        "courseNumber": "MUSIC51",
+                        "courseTitle": "Private Lessons-Keyboard",
+                        "courseUnits": "0.50"
+                    },
+                    {
+                        "courseNumber": "MUSIC52",
+                        "courseTitle": "Private Lessons-Woodwinds",
+                        "courseUnits": "0.50"
+                    },
+                    {
+                        "courseNumber": "MUSIC53",
+                        "courseTitle": "Private Lessons-Brass",
+                        "courseUnits": "0.50"
+                    },
+                    {
+                        "courseNumber": "MUSIC54",
+                        "courseTitle": "Private Lessons-Strings",
+                        "courseUnits": "0.50"
+                    },
+                    {
+                        "courseNumber": "MUSIC55",
+                        "courseTitle": "Private Lessons-Percussion",
+                        "courseUnits": "0.50"
+                    },
+                    {
+                        "courseNumber": "MUSIC56",
+                        "courseTitle": "Private Lessons-Voice",
+                        "courseUnits": "0.50"
+                    }
+                ]
+            }
+        },
+        {
+            "receiving": {
+                "conjunction": null,
+                "courses": [
+                    {
+                        "courseNumber": "WLC202",
+                        "courseTitle": "Intermediate World Language II",
+                        "courseUnits": "4.00"
+                    }
+                ]
+            },
+            "sending": {
+                "conjunction": null,
+                "courses": []
+            }
+        }
+    ]
+}

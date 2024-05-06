@@ -7,14 +7,30 @@ from selenium.common.exceptions import WebDriverException, TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
-import pandas as pd
+import json
+import re
 import os
-import time
+
+from groupCourses import map_course_groupings
 
 FILE_NAME = "output.html"
 FILE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), FILE_NAME)
 
-def extract_courses(course_area):
+def extract_courses(course_area: BeautifulSoup) -> list:
+    """
+    Extracts course information from a specified section of HTML.
+
+    Parameters
+    ---
+    course_area : BeautifulSoup
+        A course row -- the section of HTML to parse, expected to contain divs with class 'courseLine'.
+
+    Returns
+    ---
+    list
+        A list of dictionaries, each containing 'courseNumber', 'courseTitle', and 'courseUnits' for each course.
+
+    """
     courses = course_area.find_all('div', class_='courseLine')
     extracted_courses = []
     for course in courses:
@@ -51,6 +67,23 @@ try:
 
     course_rows = soup.find_all('div', class_='rowContent')    
     courses = []
+
+    # Get school names and academic year
+    institutions = {}
+    bold_tags = soup.find_all('b')
+    re_year_pattern = r'\b(\d{4})-(\d{4})\b'
+    for tag in bold_tags:
+        if 'To:' in tag.text:
+            institutions['receivingInstitution'] = tag.text.split('To: ')[-1].strip()
+        elif 'From:' in tag.text:
+            institutions['sendingInstitution'] = tag.text.split('From: ')[-1].strip()
+        elif re.search(re_year_pattern, tag.text):
+            institutions['academicYear'] = re.search(re_year_pattern, tag.text).group(0)
+
+    # print(bold_tags)
+    # print(institutions)
+
+    # Get agreements
     for row in course_rows:
         
         receiving_courses = row.find_all('div', class_='rowReceiving')
@@ -79,19 +112,22 @@ try:
 
         courses.append(courses_dict)
 
-    # print the parsed data
+    # Convert the scraped information to the desired format and group courses appropriately.
+    agreements = []
     for course in courses:
-        print(course)
+        agreements.append(map_course_groupings(course))
+    # print(agreements)
+    institutions["agreements"] = agreements
 
 except TimeoutException:
     print("Timed out waiting for page to load or element to appear.")
 except WebDriverException as e:
     print(f"WebDriver encountered an issue: {e}")
+except Exception as e:
+    print(f"Unspecified error -- possibly in map_course_groupings: {e}")
 finally:
     # Ensure the driver quits no matter what
     driver.quit()
-
-
 
 # with open(FILE_PATH, "w", encoding='utf-8') as file:
 #     file.write(str(course_rows))
